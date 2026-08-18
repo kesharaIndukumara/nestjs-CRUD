@@ -1,0 +1,11 @@
+###POST
+POST http://localhost:4000/api/v1/product/create-product
+Content-Type: application/json
+
+{
+  "name": "Product Name",
+  "description": "Product Description",
+  "price": 100,
+  "image": "image-01.jpg",
+  "rating": 4.5
+}
