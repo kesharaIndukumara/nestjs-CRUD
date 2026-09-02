@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../../config/prisma/prisma.service';
 
 export interface Iproduct {
   id: number;
@@ -13,8 +14,11 @@ export interface Iproduct {
 export class ProductService {
   private products: Iproduct[] = [];
 
+  constructor(private readonly DB: PrismaService) {}
+
   getAllProducts() {
-    return this.products;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return this.DB.product.findMany();
   }
 
   getById(id: number) {
